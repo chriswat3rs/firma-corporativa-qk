@@ -1,0 +1,203 @@
+/* ==========================================================================
+   Firma Corporativa Oficial · Quality & Knowledge
+   Estilos de la herramienta (la firma generada usa estilos en línea,
+   ver js/signature.js).
+   ========================================================================== */
+
+/* ---------- Tokens ---------- */
+:root {
+  --blue:  #0098E5;
+  --name:  #1F2937;
+  --sub:   #5B6575;
+  --sep:   #DDE5ED;
+  --paper: #f4f6f9;
+  --line:  #e3e9f0;
+  --focus-ring: 0 0 0 3px rgba(0, 152, 229, .14);
+}
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--name);
+  line-height: 1.5;
+}
+
+[hidden] { display: none !important; }
+
+/* ---------- Layout ---------- */
+.wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+}
+
+.page-header { margin-bottom: 26px; }
+.page-header h1 {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+.page-header p {
+  margin: 6px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 330px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+@media (max-width: 760px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- Tarjetas ---------- */
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 22px;
+}
+.card h2 {
+  margin: 0 0 16px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--sub);
+}
+
+/* ---------- Campos con etiqueta flotante ---------- */
+.field {
+  position: relative;
+  margin-bottom: 18px;
+}
+.field input {
+  width: 100%;
+  padding: 20px 13px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--name);
+  background: #fff;
+  transition: border-color .15s;
+}
+.field input:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: var(--focus-ring);
+}
+.field label {
+  position: absolute;
+  left: 13px;
+  top: 16px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--sub);
+  pointer-events: none;
+  transition: all .15s ease;
+}
+/* La etiqueta sube cuando el campo tiene foco o contenido */
+.field input:focus + label,
+.field input:not(:placeholder-shown) + label {
+  top: 6px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+/* ---------- Checkbox ---------- */
+.checkfield {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.checkfield input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--blue);
+  cursor: pointer;
+}
+.checkfield label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--name);
+  cursor: pointer;
+}
+
+/* ---------- Botón ---------- */
+.sublabel {
+  margin: 0 0 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--sub);
+}
+.btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: var(--blue);
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter .15s;
+}
+.btn:hover { filter: brightness(.94); }
+.btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+/* ---------- Vista previa ---------- */
+.preview-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.preview-head h2 { margin: 0; }
+
+.stage {
+  padding: 28px;
+  overflow: auto;
+  background: #fff;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+}
+
+/* ---------- Toast ---------- */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 26px;
+  z-index: 9;
+  padding: 11px 20px;
+  border-radius: 999px;
+  background: var(--name);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(20px);
+  transition: all .25s;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
