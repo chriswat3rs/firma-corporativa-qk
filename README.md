@@ -50,6 +50,28 @@ en `js/config.js`.
 El GIF del logo se anima en Gmail, Apple Mail y Outlook Web. Outlook de
 escritorio muestra solo el primer cuadro, que ya es el logo completo.
 
+## Insertar en WordPress (iframe)
+
+Pega esto en un bloque **HTML personalizado** (Gutenberg) o en un widget **HTML** (Elementor).
+El script ajusta la altura del iframe al contenido, así no aparecen barras de scroll.
+
+```html
+<iframe id="qk-firma"
+  src="https://chriswat3rs.github.io/firma-corporativa-qk/"
+  title="Generador de firma corporativa Quality &amp; Knowledge"
+  style="width:100%;height:760px;border:0;display:block;"
+  loading="lazy"
+  allow="clipboard-write"></iframe>
+<script>
+  window.addEventListener("message", function (e) {
+    if (e.origin !== "https://chriswat3rs.github.io" || !e.data || e.data.type !== "qk-firma:height") return;
+    document.getElementById("qk-firma").style.height = e.data.height + "px";
+  });
+</script>
+```
+
+`allow="clipboard-write"` es necesario para que el botón **Copiar firma** funcione dentro del iframe.
+
 ## Publicación
 
 El sitio se publica con **GitHub Pages** desde la rama `main` (carpeta raíz).

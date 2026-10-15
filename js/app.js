@@ -76,4 +76,16 @@
   $("copyRich").addEventListener("click", copySignature);
 
   render();
+
+  /* ---------- Altura automática cuando la página está dentro de un iframe ----------
+     Avisa a la página contenedora (p. ej. WordPress) cuánto mide el contenido,
+     para que el iframe se ajuste sin barras de scroll. Ver README. */
+  if (window.parent !== window) {
+    const sendHeight = () => {
+      const height = Math.ceil(document.body.getBoundingClientRect().height);
+      window.parent.postMessage({ type: "qk-firma:height", height }, "*");
+    };
+    new ResizeObserver(sendHeight).observe(document.body);
+    window.addEventListener("load", sendHeight);
+  }
 })();
